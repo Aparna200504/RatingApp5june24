@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Rating App by Aparna</title>
+        <style>
+            * {font-size: 40px; font-family: 'Times New Roman', Times, serif; color: darkred;}
+            body {background-color:lemonchiffon;}
+            .btn{background-color:rgb(249, 209, 157); font-family: serif; border-radius: 15px;width:100px; margin: 30px;}
+            .btn:hover {color:rgb(228, 81, 81); background-color: beige;}
+            .clr{ background-color: antiquewhite; margin-left: 20px; }
+          
+        </style>
+
+    </head>
+    <body>
+        <center>
+            <br>
+            <h1 >Rating App </h1>
+            <br>
+            <form onsubmit="find()">
+                <input type="number" <center placeholder="enter rating between 1 to 5 . . . . " id="rating" style="width:500px;"/>
+                <input type ="submit" value ="Clear" class="clr"/>
+                <br><br>
+                <input type ="submit" value ="M1" class="btn"/>
+                <input type ="submit" value ="M2" class="btn"/>
+                <input type ="submit" value ="M3" class="btn"/>
+                <h2 id="msg"></h2>
+            </form>
+            <script>
+                function find(){
+                    event.preventDefault();
+                    let rating = document.getElementById("rating");
+                    let msg = document.getElementById("msg");
+                    let ele = document.activeElement.value;
+                    let ans = "";
+
+                    if (ele == "Clear"){
+                        rating.value="";
+                        msg.innerHTML="";
+                        alert("clearing...");
+                        rating.focus();
+                        return;
+                    }
+
+                    if (rating.value==""){
+                        alert("You did not enter a rating ")
+                        msg.innerHTML="";
+                        rating.focus();
+                        return;
+                    }
+                    let r = parseInt(rating.value); 
+                    if ((r<1)||(r>5)){
+                        alert("rating should be between 1 to 5" );
+                        rating.value="";
+                        msg.innerHTML="";
+                        rating.focus();
+                        return;
+                    }
+
+                    if (ele == "M1")
+                    {
+                        if(r==1)        ans ="Poor";
+                        else if(r==2)        ans ="Ok";
+                        else if(r==3)        ans ="Ok";
+                        else if(r==4)        ans ="Good";
+                        else if(r==5)        ans ="Good";
+                        msg.innerHTML = "M1 --> " +ans;
+                    }
+                    else if (ele == "M2")
+                    {
+                        if(r==1)                        ans ="Poor";
+                        else if((r==2)||(r==3))         ans ="Ok";
+                        else if((r==4)||(r==5))         ans ="Good";
+                        msg.innerHTML = "M2 --> " +ans;
+                    }
+                    else if (ele == "M3")
+                    {
+                        switch(r)
+                        {
+                            case 1:     ans = "Poor";   break;
+                            case 2:     ans = "Ok";     break;
+                            case 3:     ans = "Ok";     break;
+                            case 4:     ans = "Good";   break;
+                            case 5:     ans = "Good";   break;
+                        }
+                        msg.innerHTML = "M3 --> " +ans;
+                    }
+                   
+
+                }
+            </script>
+        </center>
+
+    </body>
+</html>
